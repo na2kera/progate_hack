@@ -61,29 +61,23 @@ nav .login li {
   margin-left: 14px;
 }
 
-/*-------------------------------------------
-個別ページ
--------------------------------------------*/
+/*個別ページ*/
 #item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 100px;
 }
-/*
-画像
-*/
+/*画像*/
 #item .item-image {
-  width: 50px;
+  width: 40%;
   height: auto;
 }
 #item .item-info p {
   margin-bottom: 30px;
   line-height: 1.9;
 }
-/*
-「display: flex;」と「align-items: center;」で、
-高さを中央にそろえる
-*/
+/*「display: flex;」と「align-items: center;」で、
+高さを中央にそろえる*/
 #item .item-info .item-title {
   height: 60px;
   display: flex;
@@ -105,13 +99,11 @@ nav .login li {
   margin-bottom: 30px;
   text-align: center;
 }
-/*
-テーブル
-*/
+
+/*詳細テーブル*/
 #item .details {
   width: 100%;
 }
-
 #item .details th,
 #item .details td {
   border: 1px solid #cccccc;
@@ -135,9 +127,7 @@ nav .login li {
   }
 }
 
-/*-------------------------------------------
-フッター
--------------------------------------------*/
+/*フッター*/
 #footer {
   padding: 10px 0;
 }
@@ -146,37 +136,30 @@ nav .login li {
   text-align: center;
 }
 
-/*-------------------------------------------
-SP
--------------------------------------------*/
+/*SP*/
+
 @media screen and (max-width: 896px) {
   .site-title {
     margin-bottom: 26px;
   }
 
-  /*-------------------------------------------
-  ヘッダー
-  -------------------------------------------*/
+  /*ヘッダー*/
   #header {
     margin-bottom: 0;
     border-bottom: none;
     padding: 36px 16px 16px 16px;
   }
-  /*
-  横スクロールできるようにする
-  */
+  /*横スクロールできるようにする*/
   nav {
     overflow-x: scroll;
   }
 
-  /*-------------------------------------------
-  個別ページ
-  -------------------------------------------*/
+  /*個別ページ*/
   #item {
     flex-direction: column;
   }
   #item .item-image {
-    width: 50px;
+    width: 80%;
     height: auto;
   }
   #item .item-info {
