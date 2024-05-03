@@ -52,13 +52,13 @@ const Auth = () => {
     <div>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="メール"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="パスワード"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
