@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { supabase } from "../utils/supabase";
+import Link from "next/link";
 
 interface Form {
   id: number;
@@ -13,6 +14,7 @@ interface Form {
   height: number;
   type: string;
   location: string;
+  mail: string;
 }
 
 const List = () => {
@@ -41,18 +43,18 @@ const List = () => {
       ) : (
         <ul className="flex flex-wrap justify-center">
           {forms.map((form, index) => (
-            <li
-              key={index}
-              className="m-4 bg-white rounded-lg shadow-md max-w-sm"
-            >
-              <p className="text-lg font-bold">{form.name}</p>
-              <img
-                src={form.photo_url}
-                alt={form.name}
-                className="w-full h-48 object-cover rounded-t-lg"
-              />
-              <div className="p-4"></div>
-            </li>
+            <Link href={`/detail/${form.id}`} key={index}>
+              {" "}
+              <li className="m-4 bg-white rounded-lg shadow-md max-w-sm cursor-pointer">
+                <p className="text-lg font-bold">{form.name}</p>
+                <img
+                  src={form.photo_url}
+                  alt={form.name}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+                <div className="p-4"></div>
+              </li>
+            </Link>
           ))}
         </ul>
       )}
