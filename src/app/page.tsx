@@ -1,7 +1,8 @@
 "use client";
+import Link from "next/link";
 import Auth from "./components/Auth";
 import List from "./components/List";
-import './style.css'
+import "./style.css";
 
 export default function Home() {
   return (
@@ -11,18 +12,29 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-black text-5xl font-light">里親募集</h1>
           </div>
+          <div className="absolute top-0 right-30 p-4">
+            <Link
+              href="/admin"
+              className="bg-[#DB856E] hover:bg-[#C76A55] text-white font-bold py-2 px-4 rounded-lg"
+            >
+              投稿する
+            </Link>
+          </div>
         </div>
       </div>
       <Auth />
       <List />
       <footer id="footer">
-	<div class="footer_inner">
-		<ul>
-			<li><div id="copyright">Copyright &copy; <span></span>2024 progate_hack Hebi</div></li>
-		</ul>
-		
-	</div>
-</footer>
+        <div className="footer_inner">
+          <ul>
+            <li>
+              <div id="copyright">
+                Copyright &copy; <span></span>2024 progate_hack Hebi
+              </div>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </>
   );
 }
