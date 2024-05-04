@@ -1,7 +1,8 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
+import Link from "next/link"; // added by tina
 
 interface Form {
   id: number;
@@ -20,30 +21,27 @@ interface Form {
 }
 
 const Page = ({ params }: { params: { id: string } }) => {
-  // const [item, setItem] = useState<Form>(null);
-  console.log(params);
-  console.log(params.id);
   const id = parseInt(params.id, 10);
-  console.log(id);
   const [forms, setForms] = useState<Form[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       let { data: form, error } = await supabase.from("form").select("*");
-
-      console.log(form);
       if (error) {
         console.error("Error fetching data:", error);
         setError(error.message);
       } else {
-        console.log("Fetched data:", form);
         setForms(form || []);
       }
     };
 
     fetchData();
   }, []);
+
+  const handleContactClick = () => {
+    window.location.href = "http://localhost:3000/contact";
+  };
 
   return (
     <>
@@ -60,23 +58,6 @@ const Page = ({ params }: { params: { id: string } }) => {
       {forms
         .filter((form) => form.id === id)
         .map((form) => (
-          //   <div
-          //     style={{
-          //       margin: "20px",
-          //       border: "1px solid #ccc",
-          //       borderRadius: "8px",
-          //       padding: "10px",
-          //       maxWidth: "300px",
-          //       textAlign: "center",
-          //     }}
-          //   >
-          //     <p style={{ fontWeight: "bold", fontSize: "18px" }}>{form.name}</p>
-          //     <img
-          //       src={form.photo_url}
-          //       alt={form.name}
-          //       style={{ width: "100%", height: "auto", borderRadius: "4px" }}
-          //     />
-          //   </div>
           <main className="flex justify-center mt-10">
             <div
               id="item"
@@ -126,12 +107,13 @@ const Page = ({ params }: { params: { id: string } }) => {
                   </tbody>
                 </table>
 
-                <a
+                {/* CONTACTボタン */}
+                <button
                   className="contact-btn bg-gray-700 text-white block text-center py-4 mt-7"
-                  href="#"
+                  onClick={handleContactClick}
                 >
                   CONTACT
-                </a>
+                </button>
               </div>
             </div>
           </main>
@@ -140,9 +122,11 @@ const Page = ({ params }: { params: { id: string } }) => {
         <nav className="wrapper">
           <ul className="menu">
             <li>
-              <a href="/" className="text-center text-xs">
-                back to main
-              </a>
+              <Link href="/">
+              <button className="contact-btn bg-gray-700 text-white block text-center py-4 mt-0" style={{ width: "20%" }}>
+                  戻る
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>
