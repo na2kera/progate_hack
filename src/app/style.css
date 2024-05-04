@@ -1,0 +1,148 @@
+@charset "UTF-8";
+html {
+  @apply text-[100%];
+}
+body {
+  @apply text-[#735648] text-[1.3em] tracking-widest leading-normal text-center h-full;
+  background: #fff;
+  font-family: "Segoe UI", "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック体", YuGothic, "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo,
+    sans-serif;
+}
+a {
+  @apply text-[#333333] no-underline text-inherit text-inherit text-[#7ec1c5] inline-block transition-[0.6s] ml-0 mr-[3px] my-[3px] border-b-[#ccc] border-b border-solid;
+}
+img {
+  @apply max-w-full;
+}
+li {
+  list-style: none;
+}
+table {
+  @apply bg-[#ffd6cb] border-spacing-0 border-collapse;
+}
+.site-title {
+  @apply w-[109px] leading-[1px] mt-0 mb-9 mx-auto;
+}
+.site-title a {
+  @apply block;
+}
+.wrapper {
+  @apply max-w-[800px] mx-auto my-0;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  @apply max-w-[1000px] mt-0 mb-[50px] mx-auto pt-[46px] pb-[26px] px-0 border-b-[solid] border-b-[#c3c3c3];
+  background: #ffd6cb;
+}
+nav {
+  @apply flex items-center justify-between;
+}
+nav .menu,
+nav .login {
+  @apply flex items-center;
+}
+nav .menu li {
+  @apply mr-3.5;
+}
+nav .login li {
+  @apply ml-3.5;
+}
+
+/*個別ページ*/
+#item {
+  @apply flex justify-between mb-[100px];
+}
+/*画像*/
+#item .item-image {
+  @apply w-2/5 h-auto;
+}
+#item .item-info p {
+  @apply leading-[1.9] mb-[30px];
+}
+/*「display: flex;」と「align-items: center;」で、
+高さを中央にそろえる*/
+#item .item-info .item-title {
+  @apply h-[60px] flex items-center text-base font-[bold] mb-5 border-y-[solid] border-y-[#c3c3c3];
+}
+#item .item-info .contact-btn {
+  @apply w-full bg-[#4b4b4b] text-white block leading-none text-center mb-[30px] px-0 py-[18px];
+}
+
+/*詳細テーブル*/
+#item .details {
+  @apply w-full;
+}
+#item .details th,
+#item .details td {
+  @apply border p-5 border-solid border-[#cccccc];
+}
+#item .details th {
+  @apply font-[bold] bg-[#dedede];
+}
+@media screen and (max-width: 767px) {
+  .details,
+  .details tr,
+  .details td,
+  .details th {
+    @apply block;
+  }
+  .details th {
+    @apply w-auto;
+  }
+}
+
+/*フッター*/
+#footer {
+  @apply px-0 py-2.5;
+}
+#footer .copyright {
+  @apply text-[0.625rem] text-center;
+}
+
+/*SP*/
+@media screen and (max-width: 896px) {
+  .site-title {
+    @apply mb-[26px];
+  }
+
+  /*ヘッダー*/
+  #header {
+    @apply mb-0 pt-9 pb-4 px-4 border-b-[none];
+  }
+
+  /*横スクロールできるようにする*/
+  nav {
+    @apply overflow-x-scroll;
+  }
+
+  /*個別ページ*/
+  #item {
+    @apply flex-col;
+  }
+  #item .item-image {
+    @apply w-4/5 h-auto;
+  }
+  #item .item-info {
+    @apply px-4 py-0;
+  }
+}
+
+/*見出し線*/
+h1 {
+  @apply text-[1.4em] tracking-[0.2em] relative -ml-2.5 mr-0 my-2.5 px-0 py-[0.2em] border-b-2 border-b-[#db856e] border-solid first-letter:text-[#db856e];
+  text-shadow: 2px 2px 5px #ccc;
+
+  /* 文字の影 */
+}
+h2 {
+  @apply mt-0 mb-2.5 mx-0 first-letter:text-[#bb958a] after:bg-[#735648] after:absolute after:content-[''] after:h-0.5 after:w-1/5 after:z-[2] after:left-0 after:-bottom-0.5;
+  font: size 1.5em;
+}
+h2:first-letter {
+  font: size 1.5em;
+}
+/* 文字 */

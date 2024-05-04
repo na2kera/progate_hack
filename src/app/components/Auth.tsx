@@ -62,7 +62,11 @@ const Auth = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleLogin} disabled={isLoading}>
+      <button
+        onClick={handleLogin}
+        disabled={isLoading}
+        className="rounded-lg bg-blue-500, text-white, px-4, py-2"
+      >
         Login
       </button>
       <button onClick={handleSignUp} disabled={isLoading}>
