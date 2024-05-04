@@ -1,17 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // next/routerの代替
+"use client"
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation"; // Next.jsのnavigationからuseRouterとuseSearchParamsをインポートする
 
-const Contact = () => {
-  const router = useRouter();
+const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams(); // useSearchParamsを使用してURLクエリパラメータを取得する
+
+  const router = useRouter(); // useRouterを使用してルーターを取得する
 
   const handleGoBack = () => {
     router.back();
   };
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,35 +37,63 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <h1>コンタクト</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          placeholder="氏名"
-          required
-        />
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="text"
-          placeholder="メールアドレス"
-          required
-        />
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="メッセージ"
-          rows={10}
-          required
-        ></textarea>
-        <button type="submit" style={{ backgroundColor: "blue", color: "white" }}>
-          送信
-        </button>
-      </form>
-      <button onClick={handleGoBack} style={{ backgroundColor: "blue", color: "white" }}>
+    <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <table style={{ width: "100%" }}>
+        <tbody>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>氏名:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="氏名を記入"
+                required
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メールアドレス:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="メールアドレスを記入"
+                required
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メッセージ:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="メッセージを記入"
+                rows={10}
+                required
+                style={{ width: "100%" }}
+              ></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" className="bg-gray-700 text-white px-6 py-3 rounded-lg text-lg mt-4" style={{ width: "50%", margin: "auto" }}>
+        送信
+      </button>
+    </form>
+  );
+};
+
+const Contact = () => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h1 style={{ fontSize: "2rem" }}>コンタクト</h1>
+      <ContactForm />
+      <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 rounded-lg text-lg mt-4" style={{ width: "50%" }}>
         戻る
       </button>
     </div>
