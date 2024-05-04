@@ -74,6 +74,7 @@ export default function Example() {
             console.log(fileList);
             handleUploadStorage(fileList);
           }}
+          required
         />
         <img
           src={path}
@@ -84,18 +85,23 @@ export default function Example() {
         />
       </label>
       <div className="space-y-4">
+        <select
+          value={dogOrCat}
+          onChange={(e) => setDogOrCat(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        >
+          <option value="">犬か猫を選択</option>
+          <option value="dog">犬</option>
+          <option value="cat">猫</option>
+        </select>
         <input
           type="text"
           placeholder="名前"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full p-2 border rounded"
-        />
-        <textarea
-          placeholder="説明"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 border rounded"
+          required
         />
         <input
           type="number"
@@ -103,11 +109,14 @@ export default function Example() {
           value={age}
           onChange={(e) => setAge(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         />
+
         <select
           value={gender}
           onChange={(e) => setGender(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         >
           <option value="">性別を選択</option>
           <option value="male">男の子</option>
@@ -120,6 +129,7 @@ export default function Example() {
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         />
         <input
           type="number"
@@ -127,22 +137,15 @@ export default function Example() {
           value={height}
           onChange={(e) => setHeight(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         />
-        <select
-          value={dogOrCat}
-          onChange={(e) => setDogOrCat(e.target.value)}
-          className="w-full p-2 border rounded"
-        >
-          <option value="">犬か猫を選択</option>
-          <option value="dog">犬</option>
-          <option value="cat">猫</option>
-        </select>
         <input
           type="text"
           placeholder="種類"
           value={type}
           onChange={(e) => setType(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         />
         <input
           type="text"
@@ -150,6 +153,7 @@ export default function Example() {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           className="w-full p-2 border rounded"
+          required
         />
         <input
           type="email"
@@ -157,6 +161,14 @@ export default function Example() {
           value={mail}
           onChange={(e) => setMail(e.target.value)}
           className="w-full p-2 border rounded"
+          required
+        />
+        <textarea
+          placeholder="説明"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
         />
         <button
           type="submit"
