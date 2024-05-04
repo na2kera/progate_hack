@@ -18,7 +18,6 @@ export default function Home() {
       <footer id="footer">
 	<div class="footer_inner">
 		<ul>
-			<li><a href="#" target="_blank">お問い合わせ</a></li>
 			<li><div id="copyright">Copyright &copy; <span></span>2024 progate_hack Hebi</div></li>
 		</ul>
 		
