@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
 import Link from "next/link"; // added by tina
+import './detail_style.css';
 
 interface Form {
   id: number;
@@ -123,7 +124,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <ul className="menu">
             <li>
               <Link href="/">
-              <button className="contact-btn bg-gray-700 text-white block text-center py-4 mt-0" style={{ width: "20%" }}>
+              <button className="contact-btn bg-gray-700 text-white block text-center py-4 mt-10" style={{ width: "150%" }}>
                   戻る
                 </button>
               </Link>
