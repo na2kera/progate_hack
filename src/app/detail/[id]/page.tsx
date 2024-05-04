@@ -15,6 +15,8 @@ interface Form {
   type: string;
   location: string;
   mail: string;
+  description: string;
+  dogOrCat: string;
 }
 
 const Page = ({ params }: { params: { id: string } }) => {
@@ -91,7 +93,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 <h1 className="item-title border-t border-b border-gray-300 py-2 mb-5 text-lg font-bold flex items-center">
                   {`${form.type} ${form.gender} 推定${form.age}歳`}
                 </h1>
-                <p className="mb-7">人懐っこく、元気なわんちゃんです！</p>
+                <p className="mb-7">{`${form.description}`}</p>
 
                 <table className="details w-full">
                   <tbody>
