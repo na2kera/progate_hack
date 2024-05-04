@@ -13,6 +13,8 @@ export default function Example() {
   const [type, setType] = useState("");
   const [location, setLocation] = useState("");
   const [mail, setMail] = useState("");
+  const [description, setDescription] = useState("");
+  const [dogOrCat, setDogOrCat] = useState("");
 
   const handleUploadStorage = async (folder: FileList | null) => {
     if (!folder || !folder.length) return;
@@ -39,6 +41,8 @@ export default function Example() {
           type,
           location,
           mail,
+          description,
+          dogOrCat,
         },
       ]);
       if (error) throw error;
@@ -87,6 +91,12 @@ export default function Example() {
           onChange={(e) => setName(e.target.value)}
           className="w-full p-2 border rounded"
         />
+        <textarea
+          placeholder="説明"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
         <input
           type="number"
           placeholder="年齢"
@@ -113,11 +123,20 @@ export default function Example() {
         />
         <input
           type="number"
-          placeholder="身長 (cm)"
+          placeholder="体高 (cm)"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
           className="w-full p-2 border rounded"
         />
+        <select
+          value={dogOrCat}
+          onChange={(e) => setDogOrCat(e.target.value)}
+          className="w-full p-2 border rounded"
+        >
+          <option value="">犬か猫を選択</option>
+          <option value="dog">犬</option>
+          <option value="cat">猫</option>
+        </select>
         <input
           type="text"
           placeholder="種類"

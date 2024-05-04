@@ -15,6 +15,8 @@ interface Form {
   type: string;
   location: string;
   mail: string;
+  description: string;
+  dogOrCat: string;
 }
 
 const List = () => {
