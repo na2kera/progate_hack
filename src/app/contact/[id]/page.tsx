@@ -1,12 +1,43 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation"; // Next.jsのnavigationからuseRouterとuseSearchParamsをインポートする
+import { supabase } from "../../utils/supabase";
+import { equal } from "assert";
 
-const ContactForm = () => {
+interface Form {
+  mail: string;
+}
+
+type ContactFormProps = {
+  id: number;
+};
+
+const ContactForm = ({ id }: ContactFormProps) => {
+
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [fromemail, setFromEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
   const [searchParams, setSearchParams] = useSearchParams(); // useSearchParamsを使用してURLクエリパラメータを取得する
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let { data: form, error } = await supabase.from("form").select("mail").eq("id", id).single();
+      
+      if (error) {
+        console.error("Error fetching data:", error);
+        setError(error.message);
+      } else if (!form) {
+        console.error("Error: form is null or undefined");
+        setError("An unexpected error occurred.");
+      } else {
+        setEmail(form.mail);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const router = useRouter(); // useRouterを使用してルーターを取得する
 
@@ -17,7 +48,7 @@ const ContactForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/contact-handler", {
+      const response = await fetch(`/api/contact-handler/${id}/route`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -25,6 +56,7 @@ const ContactForm = () => {
         },
         body: JSON.stringify({
           name: name,
+          fromemail: fromemail,
           email: email,
           message: message,
         }),
@@ -40,6 +72,19 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <table style={{ width: "100%" }}>
         <tbody>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>送信先:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <input
+                value={name}
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="送信先"
+                required
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
           <tr>
             <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>氏名:</td> {/* 背景色を薄いグレーに設定 */}
             <td style={{ width: "70%" }}>
@@ -57,8 +102,8 @@ const ContactForm = () => {
             <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メールアドレス:</td> {/* 背景色を薄いグレーに設定 */}
             <td style={{ width: "70%" }}>
               <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={fromemail}
+                onChange={(e) => setFromEmail(e.target.value)}
                 type="text"
                 placeholder="メールアドレスを記入"
                 required
@@ -77,7 +122,7 @@ const ContactForm = () => {
                 required
                 style={{ width: "100%" }}
               ></textarea>
-            </td>C
+            </td>
           </tr>
         </tbody>
       </table>
@@ -88,11 +133,13 @@ const ContactForm = () => {
   );
 };
 
-const Contact = () => {
+const Contact = ({ params }: { params: { id: string } }) => {
+  const id: number = parseInt(params.id, 10);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1 style={{ fontSize: "2rem" }}>コンタクト</h1>
-      <ContactForm />
+      <ContactForm id={id} />
       <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%" }}>
         戻る
       </button>

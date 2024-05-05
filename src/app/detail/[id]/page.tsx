@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
 import Link from "next/link"; // added by tina
-import "./detail_style.css";
+
+import './detail_style.css';
+
 
 interface Form {
   id: number;
@@ -40,9 +42,11 @@ const Page = ({ params }: { params: { id: string } }) => {
     fetchData();
   }, []);
 
-  const handleContactClick = () => {
-    window.location.href = "http://localhost:3000/contact";
-  };
+
+ const handleContactClick: React.MouseEventHandler<HTMLButtonElement> = (event, formId) => {
+  window.location.href = `/contact/${formId}`;
+};
+
 
   return (
     <>
@@ -113,7 +117,9 @@ const Page = ({ params }: { params: { id: string } }) => {
 
                 {/* CONTACTボタン */}
                 <button
-                  className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 mt-7"
+
+                  className="contact-btn bg-gray-700 text-white block text-center py-4 mt-7"
+
                   onClick={handleContactClick}
                 >
                   CONTACT
