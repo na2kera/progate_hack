@@ -99,46 +99,50 @@ export default function Example() {
             onChange={(e) => setDescription(e.target.value)}
             className="w-full p-2 border rounded"
           />
-          <input
-            type="number"
-            placeholder="年齢"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            className="w-full p-2 border rounded"
-          >
-            <option value="">性別を選択</option>
-            <option value="male">男の子</option>
-            <option value="female">女の子</option>
-            <option value="other">その他</option>
-          </select>
-          <input
-            type="number"
-            placeholder="体重 (kg)"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="number"
-            placeholder="体高 (cm)"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <select
-            value={dogOrCat}
-            onChange={(e) => setDogOrCat(e.target.value)}
-            className="w-full p-2 border rounded"
-          >
-            <option value="">犬か猫を選択</option>
-            <option value="dog">犬</option>
-            <option value="cat">猫</option>
-          </select>
+          <div className="flex justify-between space-x-4">
+            <input
+              type="number"
+              placeholder="年齢"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              className="w-1/3 p-2 border rounded"
+            />
+            <input
+              type="number"
+              placeholder="体重 (kg)"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              className="w-1/3 p-2 border rounded"
+            />
+            <input
+              type="number"
+              placeholder="体高 (cm)"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              className="w-1/3 p-2 border rounded"
+            />
+          </div>
+          <div className="flex justify-between space-x-4">
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-1/2 p-2 border rounded"
+            >
+              <option value="">性別を選択</option>
+              <option value="male">男の子</option>
+              <option value="female">女の子</option>
+              <option value="other">その他</option>
+            </select>
+            <select
+              value={dogOrCat}
+              onChange={(e) => setDogOrCat(e.target.value)}
+              className="w-1/2 p-2 border rounded"
+            >
+              <option value="">犬か猫を選択</option>
+              <option value="dog">犬</option>
+              <option value="cat">猫</option>
+            </select>
+          </div>
           <input
             type="text"
             placeholder="種類"
