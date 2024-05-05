@@ -12,10 +12,10 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-black text-5xl font-light">里親募集</h1>
           </div>
-          <div className="absolute top-0 right-30 p-4">
+          <div className="absolute top-3 right-30 p-4">
             <Link
               href="/admin"
-              className="bg-[#DB856E] hover:bg-[#C76A55] text-white font-bold py-2 px-4 rounded-lg"
+              className="bg-[#DB856E] hover:bg-[#C76A55] text-white font-bold py-2 px-4 rounded-lg text-sm" // text-sm を追加
             >
               投稿する
             </Link>
