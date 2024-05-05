@@ -68,9 +68,8 @@ const List = () => {
                 <img
                   src={form.photo_url}
                   alt={form.name}
-                  className="w-full h-48 object-cover rounded-t-lg"
+                  className="w-full h-48 object-cover rounded-b-lg"
                 />
-                <div className="p-4"></div>
               </li>
             </Link>
           ))}
