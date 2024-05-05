@@ -62,7 +62,6 @@ export default function Example() {
   };
 
   return (
-
     <form
       onSubmit={handleSubmit}
       className="max-w-lg mx-auto p-4 shadow-lg rounded-lg bg-white"
@@ -166,12 +165,11 @@ export default function Example() {
         />
         <button
           type="submit"
-          className="w-full text-white font-bold py-2 px-4 rounded"
-
+          className="w-full bg-gray-700 text-white font-bold py-2 px-4 rounded"
         >
-          一覧に戻る
-        </Link>
+          送信
+        </button>
       </div>
-    </>
+    </form>
   );
 }
