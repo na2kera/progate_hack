@@ -77,11 +77,11 @@ const ContactForm = () => {
                 required
                 style={{ width: "100%" }}
               ></textarea>
-            </td>
+            </td>C
           </tr>
         </tbody>
       </table>
-      <button type="submit" className="bg-gray-700 text-white px-6 py-3 rounded-lg text-lg mt-4" style={{ width: "50%", margin: "auto" }}>
+      <button type="submit" className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%", margin: "auto" }}>
         送信
       </button>
     </form>
@@ -93,7 +93,7 @@ const Contact = () => {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1 style={{ fontSize: "2rem" }}>コンタクト</h1>
       <ContactForm />
-      <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 rounded-lg text-lg mt-4" style={{ width: "50%" }}>
+      <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%" }}>
         戻る
       </button>
     </div>
