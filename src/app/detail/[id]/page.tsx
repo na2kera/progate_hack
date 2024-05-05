@@ -1,8 +1,8 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
-import Link from "next/link";
+import Link from "next/link"; // added by tina
 import './detail_style.css';
 
 interface Form {
@@ -40,8 +40,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     fetchData();
   }, []);
 
-  const handleContactClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    window.location.href = `/contact/${id}`;
+  const handleContactClick = () => {
+    window.location.href = "http://localhost:3000/contact";
   };
 
   return (
@@ -110,8 +110,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
                 {/* CONTACTボタン */}
                 <button
-                  className="contact-btn bg-gray-700 text-white block text-center py-4 mt-7"
-                  onClick={(event) => handleContactClick(event, form.id)}
+                  className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 mt-7"
+                  onClick={handleContactClick}
                 >
                   CONTACT
                 </button>
@@ -124,7 +124,7 @@ const Page = ({ params }: { params: { id: string } }) => {
           <ul className="menu">
             <li>
               <Link href="/">
-              <button className="contact-btn bg-gray-700 text-white block text-center py-4 mt-10" style={{ width: "150%" }}>
+              <button className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 pt-[10px] pb-[10px] pl-[50px] pr-[50px] mt-10" style={{ width: "150%" }}>
                   戻る
                 </button>
               </Link>
