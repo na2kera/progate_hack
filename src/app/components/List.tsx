@@ -43,7 +43,7 @@ const List = () => {
 
   return (
     <div>
-      <div className="tabs flex border-b w-1/2 mx-auto">
+      <div className="tabs flex border-b w-3/5 mx-auto">
         <button
           className={`tab flex-1 text-center py-2 ${selectedTab === "dog" ? "text-black border-[#DB856E] border-b-4" : "text-gray-500"}`}
           onClick={() => setSelectedTab("dog")}
