@@ -1,8 +1,3 @@
-/*
-  Based on TailwindCSS recommendations,
-  consider using classes instead of the `@apply` directive
-  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
-*/
 @charset "UTF-8";
 html {
   @apply text-[100%];
@@ -33,12 +28,12 @@ table {
   @apply block;
 }
 
+
 /*-------------------------------------------
 ヘッダー
 -------------------------------------------*/
 #header {
-  @apply max-w-[1000px] mt-0 mb-[50px] mx-auto pt-[46px] pb-[26px] px-0 border-b-[solid] border-b-[#c3c3c3];
-  background: #ffd6cb;
+  @apply bg-[#ffd6cb] max-w-[1000px] mt-0 mb-[50px] mx-auto pt-[46px] pb-[26px] px-0 border-b-[solid] border-b-[#c3c3c3];
 }
 nav {
   @apply flex items-center justify-between;
@@ -60,7 +55,7 @@ nav .login li {
 }
 /*画像*/
 #item .item-image {
-  @apply w-2/5 h-auto;
+  @apply w-[500px] h-auto pt-[200px] ;
 }
 #item .item-info p {
   @apply leading-[1.9] mb-[30px];
