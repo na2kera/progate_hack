@@ -49,6 +49,7 @@ const Auth = () => {
   };
 
   return (
+
     <div className="relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-16 bg-orange-300"></div>
         <div className="mx-auto max-w-screen-md py-8 px-2 sm:px-4 md:max-w-screen-xl md:py-16 lg:py-24 md:px-4">
@@ -165,6 +166,7 @@ const Auth = () => {
         </div>
       </form>
       
+
     </div>
   </div>
 </div>
