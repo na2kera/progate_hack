@@ -160,7 +160,7 @@ export default function Example() {
         />
         <button
           type="submit"
-          className="w-full text-white font-bold py-2 px-4 rounded"
+          className="bg-[#DB856E] hover:bg-[#C76A55] w-full text-white font-bold py-2 px-4 rounded"
         >
           送信
         </button>
