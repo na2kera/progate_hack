@@ -45,13 +45,13 @@ const List = () => {
     <div>
       <div className="tabs flex border-b w-1/2 mx-auto">
         <button
-          className={`tab flex-1 text-center py-2 ${selectedTab === "dog" ? "text-black border-green-500 border-b-4" : "text-gray-500"}`}
+          className={`tab flex-1 text-center py-2 ${selectedTab === "dog" ? "text-black border-[#DB856E] border-b-4" : "text-gray-500"}`}
           onClick={() => setSelectedTab("dog")}
         >
           犬
         </button>
         <button
-          className={`tab flex-1 text-center py-2 ${selectedTab === "cat" ? "text-black border-green-500 border-b-4" : "text-gray-500"}`}
+          className={`tab flex-1 text-center py-2 ${selectedTab === "cat" ? "text-black border-[#DB856E] border-b-4" : "text-gray-500"}`}
           onClick={() => setSelectedTab("cat")}
         >
           猫
