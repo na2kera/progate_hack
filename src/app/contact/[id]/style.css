@@ -1,0 +1,218 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+body{
+  background:#fff;
+  color:#735648;
+  font-size:1.3em;
+  font-family:'Segoe UI','游ゴシック Medium','Yu Gothic Medium','游ゴシック体',YuGothic,'Hiragino Kaku Gothic ProN','メイリオ',Meiryo,sans-serif;
+  letter-spacing:.1em;
+  line-height:1.5;
+  text-align:center;
+  height:100%
+  }
+a {
+  color: #333333;
+  text-decoration: none;
+  color:inherit
+}
+img {
+  max-width: 100%;
+}
+li {
+  list-style: none;
+}
+table {
+  background-color: #ffd6cb;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.site-title {
+  width: 109px;
+  line-height: 1px;
+  margin: 0 auto 36px auto;
+}
+.site-title a {
+  display: block;
+}
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  max-width: 1000px;
+  padding: 46px 0 26px 0;
+  margin: 0 auto 50px auto;
+  background:#ffd6cb;
+  border-bottom: solid 1px #c3c3c3;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav .menu,
+nav .login {
+  display: flex;
+  align-items: center;
+}
+nav .menu li {
+  margin-right: 14px;
+}
+nav .login li {
+  margin-left: 14px;
+}
+
+/*個別ページ*/
+#item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+/*画像*/
+#item .item-image {
+  width: 40%;
+  height: auto;
+}
+#item .item-info p {
+  margin-bottom: 30px;
+  line-height: 1.9;
+}
+/*「display: flex;」と「align-items: center;」で、
+高さを中央にそろえる*/
+#item .item-info .item-title {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-top: solid 1px #c3c3c3;
+  border-bottom: solid 1px #c3c3c3;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#item .item-info .contact-btn {
+  width: 100%;
+  background-color: #4b4b4b;
+  color: #ffffff;
+  display: block;
+  line-height: 1;
+  padding: 18px 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/*詳細テーブル*/
+#item .details {
+  width: 100%;
+}
+#item .details th,
+#item .details td {
+  border: 1px solid #cccccc;
+  padding: 20px;
+}
+
+#item .details th {
+  font-weight: bold;
+  background-color: #dedede;
+}
+
+@media screen and (max-width: 767px) {
+  .details,
+  .details tr,
+  .details td,
+  .details th {
+    display: block;
+  }
+  .details th {
+    width: auto;
+  }
+}
+
+/*フッター*/
+#footer {
+  padding: 10px 0;
+
+}
+#footer .copyright {
+  font-size: 0.625rem;
+  text-align: center;
+}
+
+/*SP*/
+
+@media screen and (max-width: 896px) {
+  .site-title {
+    margin-bottom: 26px;
+  }
+
+  /*ヘッダー*/
+  #header {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding: 36px 16px 16px 16px;
+  }
+  /*横スクロールできるようにする*/
+  nav {
+    overflow-x: scroll;
+  }
+
+  /*個別ページ*/
+  #item {
+    flex-direction: column;
+  }
+  #item .item-image {
+    width: 80%;
+    height: auto;
+  }
+  #item .item-info {
+    padding: 0 16px;
+  }
+}
+
+/*見出し線*/
+h1{
+  border-bottom:2px solid #db856e;
+  font-size:1.4em;
+  letter-spacing:.2em;
+  margin:10px 0 10px -10px;
+  padding:.2em 0;
+  position:relative;
+  text-shadow:2px 2px 5px #ccc /* 文字の影 */
+ }
+ h1:first-letter{
+  color:#db856e
+}
+h2{
+  font: size 1.5em;
+  margin:0 0 10px;
+  }
+h2:first-letter{
+  color:#bb958a;
+  font: size 1.5em;
+}
+h2::after{
+  background-color:#735648;
+  position:absolute;
+  bottom:-2px;left:0;
+  content:'';
+  height:2px;width:20%;
+  z-index:2
+}
+/* 文字 */
+a{
+  color:inherit
+  }
+a{
+  border-bottom:1px solid #ccc;
+  color:#7ec1c5;
+  display:inline-block;
+  margin:3px 3px 3px 0;
+  transition:.6s
+  }
