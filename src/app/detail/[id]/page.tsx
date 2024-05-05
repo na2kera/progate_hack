@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
 import Link from "next/link"; // added by tina
-import './detail_style.css';
+import "./detail_style.css";
 
 interface Form {
   id: number;
@@ -65,6 +65,9 @@ const Page = ({ params }: { params: { id: string } }) => {
               className="flex justify-between mb-24 max-w-4xl w-full"
             >
               <div className="item-image w-2/5">
+                <p className="text-center font-bold text-2xl mb-10">
+                  {form.name}
+                </p>
                 <img
                   src={form.photo_url}
                   alt={form.name}
@@ -72,7 +75,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                 />
               </div>
               <div className="item-info flex flex-col p-4">
-                <h1 className="item-title border-t border-b border-gray-300 py-2 mb-5 text-lg font-bold flex items-center">
+                <h1 className="item-title border-t border-b border-gray-300 py-2 mb-5 text-lg font-bold flex items-center justify-center text-center">
                   {`${form.type} ${form.gender} 推定${form.age}歳`}
                 </h1>
                 <p className="mb-7">{`${form.description}`}</p>
@@ -110,10 +113,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
                 {/* CONTACTボタン */}
                 <button
-
                   className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 mt-7"
                   onClick={handleContactClick}
-
                 >
                   CONTACT
                 </button>
@@ -126,7 +127,10 @@ const Page = ({ params }: { params: { id: string } }) => {
           <ul className="menu">
             <li>
               <Link href="/">
-              <button className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 pt-[10px] pb-[10px] pl-[50px] pr-[50px] mt-10" style={{ width: "150%" }}>
+                <button
+                  className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 pt-[10px] pb-[10px] pl-[50px] pr-[50px] mt-10"
+                  style={{ width: "150%" }}
+                >
                   戻る
                 </button>
               </Link>
