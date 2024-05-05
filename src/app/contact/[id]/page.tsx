@@ -76,7 +76,7 @@ const ContactForm = ({ id }: ContactFormProps) => {
             <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>送信先:</td> {/* 背景色を薄いグレーに設定 */}
             <td style={{ width: "70%" }}>
               <input
-                value={name}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 placeholder="送信先"
