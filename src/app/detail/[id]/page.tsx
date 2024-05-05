@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabase";
 import Head from "next/head";
-import Link from "next/link"; // added by tina
 
-import './detail_style.css';
+import Link from "next/link";
+
 
 
 interface Form {
@@ -43,9 +43,10 @@ const Page = ({ params }: { params: { id: string } }) => {
   }, []);
 
 
- const handleContactClick: React.MouseEventHandler<HTMLButtonElement> = (event, formId) => {
-  window.location.href = `/contact/${formId}`;
-};
+  const handleContactClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    window.location.href = `/contact/${id}`;
+  };
+
 
 
   return (
@@ -120,7 +121,8 @@ const Page = ({ params }: { params: { id: string } }) => {
 
                   className="contact-btn bg-gray-700 text-white block text-center py-4 mt-7"
 
-                  onClick={handleContactClick}
+                  onClick={(event) => handleContactClick(event, form.id)}
+
                 >
                   CONTACT
                 </button>
