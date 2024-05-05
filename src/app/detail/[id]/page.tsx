@@ -110,8 +110,10 @@ const Page = ({ params }: { params: { id: string } }) => {
 
                 {/* CONTACTボタン */}
                 <button
+
                   className="contact-btn bg-[#4B4B4B] hover:bg-[#5B5B5B] text-white block text-center py-4 mt-7"
                   onClick={handleContactClick}
+
                 >
                   CONTACT
                 </button>

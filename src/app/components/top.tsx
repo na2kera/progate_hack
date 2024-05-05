@@ -57,6 +57,7 @@ export default function Example() {
   };
 
   return (
+
     <form
       onSubmit={handleSubmit}
       className="max-w-lg mx-auto p-4 shadow-lg rounded-lg bg-white"
@@ -161,6 +162,7 @@ export default function Example() {
         <button
           type="submit"
           className="bg-[#DB856E] hover:bg-[#C76A55] w-full text-white font-bold py-2 px-4 rounded"
+
         >
           送信
         </button>
