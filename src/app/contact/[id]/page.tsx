@@ -1,15 +1,23 @@
 "use client"
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation"; // Next.jsのnavigationからuseRouterとuseSearchParamsをインポートする
 
-const Contact = () => {
-  const router = useRouter();
-  const { id } = router.query;
+const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams(); // useSearchParamsを使用してURLクエリパラメータを取得する
+
+  const router = useRouter(); // useRouterを使用してルーターを取得する
+
+  const handleGoBack = () => {
+    router.back();
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(`/api/contact-handler/${id}`, {
+      const response = await fetch("http://localhost:3000/api/contact-handler", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -28,39 +36,66 @@ const Contact = () => {
     }
   };
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
   return (
-    <div>
-      <h1>コンタクト</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          名前:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          メールアドレス:
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          メッセージ:
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </label>
-        <button type="submit">送信</button>
-      </form>
+    <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <table style={{ width: "100%" }}>
+        <tbody>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>氏名:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="氏名を記入"
+                required
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メールアドレス:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="メールアドレスを記入"
+                required
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メッセージ:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" }}>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="メッセージを記入"
+                rows={10}
+                required
+                style={{ width: "100%" }}
+              ></textarea>
+            </td>C
+          </tr>
+        </tbody>
+      </table>
+      <button type="submit" className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%", margin: "auto" }}>
+        送信
+      </button>
+    </form>
+  );
+};
+
+const Contact = () => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h1 style={{ fontSize: "2rem" }}>コンタクト</h1>
+      <ContactForm />
+      <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%" }}>
+        戻る
+      </button>
     </div>
   );
 };
