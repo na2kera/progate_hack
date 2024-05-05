@@ -22,6 +22,7 @@ interface Form {
 const List = () => {
   const [forms, setForms] = useState<Form[]>([]);
   const [error, setError] = useState("");
+  const [selectedTab, setSelectedTab] = useState("dog"); // 現在選択されているタブを追跡
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,23 +39,37 @@ const List = () => {
     fetchData();
   }, []);
 
+  const filteredForms = forms.filter((form) => form.dogOrCat === selectedTab); // 選択されたタブに基づいてフィルタリング
+
   return (
     <div>
+      <div className="tabs flex border-b w-3/5 mx-auto">
+        <button
+          className={`tab flex-1 text-center py-2 ${selectedTab === "dog" ? "text-black border-[#DB856E] border-b-4" : "text-gray-500"}`}
+          onClick={() => setSelectedTab("dog")}
+        >
+          犬
+        </button>
+        <button
+          className={`tab flex-1 text-center py-2 ${selectedTab === "cat" ? "text-black border-[#DB856E] border-b-4" : "text-gray-500"}`}
+          onClick={() => setSelectedTab("cat")}
+        >
+          猫
+        </button>
+      </div>
       {error ? (
         <div>Error: {error}</div>
       ) : (
         <ul className="flex flex-wrap justify-center">
-          {forms.map((form, index) => (
+          {filteredForms.map((form, index) => (
             <Link href={`/detail/${form.id}`} key={index}>
-              {" "}
               <li className="m-4 bg-white rounded-lg shadow-md max-w-sm cursor-pointer">
                 <p className="text-lg font-bold">{form.name}</p>
                 <img
                   src={form.photo_url}
                   alt={form.name}
-                  className="w-full h-48 object-cover rounded-t-lg"
+                  className="w-full h-48 object-cover rounded-b-lg"
                 />
-                <div className="p-4"></div>
               </li>
             </Link>
           ))}
