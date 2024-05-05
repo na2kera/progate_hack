@@ -1,56 +1,36 @@
 "use client"
-import { NextApiResponse } from "next";
-import nodemailer from "nodemailer";
+import { NextResponse } from "next/server";
+import nodeMailer from "nodemailer";
+import { NextApiRequest, NextApiResponse } from "next";
 
-interface Form {
-    id: number;
-    mail: string;
-}
-
-export default async function handler(req, res: NextApiResponse) {
-    const { id } = req.query;
-    if (req.method === "POST") {
-        const { email, name, message }: { email: string; name: string; message: string } = req.body;
-        // id に基づいてメールアドレスを取得する処理
-        let toAddress;
-        switch (id.toString()) { // 文字列型に変換
-            case "1":
-                toAddress = "example1@example.com";
-                break;
-            case "2":
-                toAddress = "example2@example.com";
-                break;
-            // 他の id に対するメールアドレスを追加
-            default:
-                toAddress = "default@example.com"; // 適切なデフォルトのアドレスを設定する
-                break;
-        }
+export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+    if (request.method === "POST") {
+        const { email, fromemail, name, message } = request.body;
 
         try {
-            const transporter = nodemailer.createTransport({
-                host: "smtp-mail.outlook.com",
+            const transporter = nodeMailer.createTransport({
+                host: "smtp.gmail.com", // メールサーバー。ここではHotmail/Outlookを使った例
                 port: 587,
                 secure: false,
                 auth: {
-                    user: "my-email@hotmail.co.jp",
-                    pass: "my-password"
+                    user: "aa", // 送信元メールアドレス
+                    pass: "aa" // パスワード
                 }
             });
 
             const mailOptions = {
-                from: "里親募集",
-                to: toAddress,
-                subject: "里親募集サイトからお問い合わせが届きました",
-                text: `名前: ${name} \n\nメールアドレス: ${email} \n\nメッセージ: ${message}`
+                from: "My website <my-email@hotmail.co.jp>",
+                to: email, // 宛先メールアドレスを指定
+                subject: "里親募集　お問い合わせ",
+                text: `名前: ${name} \n\nメールアドレス: ${fromemail} \n\nメッセージ: ${message}`
             };
 
             const info = await transporter.sendMail(mailOptions);
-            return res.status(200).json({ message: "成功しました" });
+            response.status(200).json({ message: "成功しました" });
         } catch (err) {
-            console.error(err);
-            return res.status(500).json({ message: "失敗しました" });
+            response.status(500).json({ message: "失敗しました" });
         }
     } else {
-        return res.status(405).end();
+        response.status(405).json({ message: "失敗しました" });
     }
 }
