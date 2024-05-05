@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { uploadStorage } from "./storage";
 import { supabase } from "../utils/supabase";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Example() {
   const [path, setPathName] = useState<string | undefined>();
@@ -15,6 +17,8 @@ export default function Example() {
   const [mail, setMail] = useState("");
   const [description, setDescription] = useState("");
   const [dogOrCat, setDogOrCat] = useState("");
+
+  const router = useRouter();
 
   const handleUploadStorage = async (folder: FileList | null) => {
     if (!folder || !folder.length) return;
@@ -47,6 +51,7 @@ export default function Example() {
       ]);
       if (error) throw error;
       alert("データの送信に成功しました！");
+      router.push("/");
     } catch (error) {
       if (error instanceof Error) {
         alert(`送信エラー: ${error.message}`);
@@ -57,6 +62,7 @@ export default function Example() {
   };
 
   return (
+
     <form
       onSubmit={handleSubmit}
       className="max-w-lg mx-auto p-4 shadow-lg rounded-lg bg-white"
@@ -161,10 +167,11 @@ export default function Example() {
         <button
           type="submit"
           className="w-full text-white font-bold py-2 px-4 rounded"
+
         >
-          送信
-        </button>
+          一覧に戻る
+        </Link>
       </div>
-    </form>
+    </>
   );
 }
