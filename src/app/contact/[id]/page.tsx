@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation"; // Next.jsのnavigationからuseRouterとuseSearchParamsをインポートする
 import { supabase } from "../../utils/supabase";
 import { equal } from "assert";
+import './style.css';
 
 interface Form {
   mail: string;
@@ -69,19 +70,20 @@ const ContactForm = ({ id }: ContactFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <table style={{ width: "100%" }}>
+    <form onSubmit={handleSubmit} style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", paddingLeft: "50px", paddingRight: "50px" }}>
+      <div style={{paddingBottom: "30px"}}></div>
+      <table className="rounded-[20px_20px_20px_20px]" style={{ width: "100%" }}>
         <tbody>
           <tr>
-            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>送信先:</td> {/* 背景色を薄いグレーに設定 */}
-            <td style={{ width: "70%" }}>
+            <td className="rounded-[20px_0_0_0]" style={{ width: "30%", backgroundColor: "#f5f5f5", paddingTop: "10px",}}>送信先:</td> {/* 背景色を薄いグレーに設定 */}
+            <td style={{ width: "70%" , paddingLeft: "15px"}}>
               <input
-                value={name}
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
                 placeholder="送信先"
                 required
-                style={{ width: "100%" }}
+                style={{ width: "100%" ,backgroundColor: "#FED7CB"}}
               />
             </td>
           </tr>
@@ -92,7 +94,7 @@ const ContactForm = ({ id }: ContactFormProps) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                placeholder="氏名を記入"
+                placeholder=" 氏名を記入"
                 required
                 style={{ width: "100%" }}
               />
@@ -105,28 +107,29 @@ const ContactForm = ({ id }: ContactFormProps) => {
                 value={fromemail}
                 onChange={(e) => setFromEmail(e.target.value)}
                 type="text"
-                placeholder="メールアドレスを記入"
+                placeholder=" メールアドレスを記入"
                 required
                 style={{ width: "100%" }}
               />
             </td>
           </tr>
           <tr>
-            <td style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メッセージ:</td> {/* 背景色を薄いグレーに設定 */}
+            <td className="rounded-[0_0_0_20px]" style={{ width: "30%", backgroundColor: "#f5f5f5" }}>メッセージ:</td> {/* 背景色を薄いグレーに設定 */}
             <td style={{ width: "70%" }}>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="メッセージを記入"
+                placeholder=" メッセージを記入"
                 rows={10}
                 required
-                style={{ width: "100%" }}
+                style={{ width: "100%"}}
               ></textarea>
             </td>
           </tr>
         </tbody>
       </table>
-      <button type="submit" className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%", margin: "auto" }}>
+      <div style={{paddingBottom: "30px"}}></div>
+      <button type="submit" className="bg-[#DB856E] hover:bg-[#C76A55] text-white font-bold px-6 py-3 text-lg mt-4 rounded-lg text-sm " style={{ width: "30%", margin: "auto" }}>
         送信
       </button>
     </form>
@@ -140,7 +143,7 @@ const Contact = ({ params }: { params: { id: string } }) => {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1 style={{ fontSize: "2rem" }}>コンタクト</h1>
       <ContactForm id={id} />
-      <button onClick={() => window.history.back()} className="bg-gray-700 text-white px-6 py-3 text-lg mt-4" style={{ width: "50%" }}>
+      <button onClick={() => window.history.back()} className="bg-[#EABCAE] hover:bg-[#FED7CB] text-white font-bold px-6 py-3 text-lg mt-4 rounded-lg text-sm" style={{ width: "26%" }}>
         戻る
       </button>
     </div>
